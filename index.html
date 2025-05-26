@@ -3,15 +3,35 @@
 <head>
     <title>Access Restricted</title>
     <script>
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape") {
+                event.preventDefault(); // Prevent escape key from closing the tab
+            }
+        });
+
+        window.onbeforeunload = function() {
+            return "Access is restricted. You must enter the password!";
+        };
+
+        function blockNavigation() {
+            history.pushState(null, "", location.href);
+            window.addEventListener("popstate", function() {
+                history.pushState(null, "", location.href);
+            });
+        }
+
         function checkPassword() {
             var password = document.getElementById("password").value;
             if (password === "46583") {
                 document.getElementById("pageContent").style.display = "block";
                 document.getElementById("loginForm").style.display = "none";
+                window.onbeforeunload = null; // Remove exit warning once password is entered
             } else {
                 alert("ACCESS DENIED. Try again.");
             }
         }
+
+        window.onload = blockNavigation;
     </script>
     <style>
         body {
@@ -23,20 +43,12 @@
         #loginForm, #pageContent {
             margin-top: 20vh;
         }
-        input {
+        input, button {
             background-color: black;
             color: #00ff00;
             border: 1px solid #00ff00;
             font-size: 18px;
             padding: 5px;
-        }
-        button {
-            background-color: black;
-            color: #00ff00;
-            border: 1px solid #00ff00;
-            font-size: 18px;
-            padding: 5px;
-            cursor: pointer;
         }
         button:hover {
             background-color: #00ff00;
