@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Access Restricted</title>
+    <script>
+        function checkPassword() {
+            var password = document.getElementById("password").value;
+            if (password === "46583") {
+                document.getElementById("pageContent").style.display = "block";
+                document.getElementById("loginForm").style.display = "none";
+            } else {
+                alert("ACCESS DENIED. Try again.");
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: black;
+            color: #00ff00;
+            font-family: "Courier New", monospace;
+            text-align: center;
+        }
+        #loginForm, #pageContent {
+            margin-top: 20vh;
+        }
+        input {
+            background-color: black;
+            color: #00ff00;
+            border: 1px solid #00ff00;
+            font-size: 18px;
+            padding: 5px;
+        }
+        button {
+            background-color: black;
+            color: #00ff00;
+            border: 1px solid #00ff00;
+            font-size: 18px;
+            padding: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #00ff00;
+            color: black;
+        }
+        #pageContent {
+            display: none;
+        }
+        a {
+            color: #00ff00;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div id="loginForm">
+        <h2>Enter Access Code</h2>
+        <input type="password" id="password">
+        <button onclick="checkPassword()">Submit</button>
+    </div>
+
+    <div id="pageContent">
+        <h2>Welcome, Agent.</h2>
+        <p>Access granted to classified content.</p>
+        <p><a href="https://sites.google.com/student.evergreenps.org/studentclassroom-new/password-hidden-ashfflaqqiayyakddjhfdgff" target="_blank">Proceed to Secure Module</a></p>
+    </div>
+</body>
+</html>
